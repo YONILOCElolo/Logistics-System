@@ -325,30 +325,20 @@ public class dealData {
 			ArrayList routes = rute.route;
 
 			n++;
-			String json = "[";
-
+			String way = "P0-";
 			for (int i = 0; i < routes.size(); i++) {
-				if(i==0) {
-					String name1 = routes.get(i).toString();
-					
-					json += "{ from: "+"1"+","+" to: "+name1+","+" text: \"至\" "+"},";
-				
-				
-				} else if(i < routes.size()-1 ) {
-					String name1 = routes.get(i-1).toString();
-					String name2 = routes.get(i).toString();
-					json += "{ from: "+name1+","+" to: "+name2+","+" text: \"至\" "+"},";
-					json += "{ from: "+name2+","+" to: "+"1"+","+" text:  \"至\" "+"},";
-				}	
+				String name = routes.get(i).toString();
+				way = way + name + "-";
+
 			}
-			json+="]";
-			finPath finPath = new finPath(n, json, rute.Total_route,rute.car);
+			way = way + "P0";
+			finPath finPath = new finPath(n, way, rute.Total_route,rute.car);
 			List<finPath> finPathList = ListfinPath.getInstance();
 			finPathList.add(finPath);
 			Routecount += rute.Total_route;
-			   System.out.println(json);
+
 		}
-  
+//		System.out.println();
 //		System.out.println("总行驶里程：" + Routecount + "公里");
 
 	}
